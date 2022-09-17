@@ -2,7 +2,7 @@
 
 ## docker
 
-``:sh
+```:sh
 docker-compose exec goapp go run hello/main.go
 docker-compose exec goapp go mod download google.golang.org/api
 docker-compose exec goapp go mod download github.com/googleapis/enterprise-certificate-proxy

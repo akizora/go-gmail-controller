@@ -21,3 +21,6 @@ token.json
 credentials.json
 memo.md
 go.sum
+
+secret.json
+.env

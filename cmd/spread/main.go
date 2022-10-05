@@ -16,6 +16,7 @@ type SheetClient struct {
 }
 
 func NewSheetClient(ctx context.Context, spreadsheetID string) (*SheetClient, error) {
+	fmt.Println("NewSheetClient!!!")
 	b, err := ioutil.ReadFile("secret.json")
 	if err != nil {
 		return nil, err
@@ -44,12 +45,18 @@ func (s *SheetClient) Get(range_ string) ([][]interface{}, error) {
 }
 
 func main() {
+	fmt.Println("main!!!")
 	ctx := context.Background()
 	client, err := NewSheetClient(ctx, os.Getenv("SPREAD_SHEET_ID"))
 	if err != nil {
 		panic(err)
 	}
-	values, err := client.Get("'シート1'!A1:C1")
+	fmt.Println(os.Getenv("SPREAD_SHEET_ID"))
+	fmt.Println("データ取得")
+	values, err := client.Get("'応募者リスト'!A1:C4")
+	if err != nil {
+		panic(err)
+	}
 	for _, row := range values {
 		fmt.Println(row)
 	}
